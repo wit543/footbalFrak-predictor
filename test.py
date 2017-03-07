@@ -63,4 +63,9 @@ for row in c.execute('SELECT Match.match_api_id AS match_api_id,Match.home_team_
         else :
             match_prob[result][i][attr] +=1
 
+for row in c.execute('SELECT COUNT(*) FROM Match ') :
+    for key in match_prob :
+        for attr in match_prob[key] :
+            for k in attr :
+                attr[k] /= row[0]
 print (match_prob)
