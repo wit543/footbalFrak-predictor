@@ -116,4 +116,10 @@ for row in c.execute('SELECT team_api_id,buildUpPlaySpeedClass, buildUpPlayDribb
         else :
             team_attributes[row[0]][11][row[12]] += 1
 
+for row in c.execute('SELECT team_api_id,COUNT(buildUpPlaySpeedClass), COUNT(buildUpPlayDribblingClass), COUNT(buildUpPlayPassingClass), COUNT(buildUpPlayPositioningClass), COUNT(chanceCreationPassingClass), COUNT(chanceCreationCrossingClass), COUNT(chanceCreationShootingClass), COUNT(chanceCreationPositioningClass), COUNT(defencePressureClass), COUNT(defenceAggressionClass),COUNT( defenceTeamWidthClass), COUNT(defenceDefenderLineClass) from Team_Attributes GROUP BY team_api_id') :
+    i = 1
+    for attr in team_attributes[row[0]] :
+        for key in attr :
+            attr[key] /= row[i]
+        i+=1
 print (team_attributes)
