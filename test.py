@@ -116,10 +116,24 @@ for row in c.execute('SELECT team_api_id,buildUpPlaySpeedClass, buildUpPlayDribb
         else :
             team_attributes[row[0]][11][row[12]] += 1
 
+#Calculate Prob
 for row in c.execute('SELECT team_api_id,COUNT(buildUpPlaySpeedClass), COUNT(buildUpPlayDribblingClass), COUNT(buildUpPlayPassingClass), COUNT(buildUpPlayPositioningClass), COUNT(chanceCreationPassingClass), COUNT(chanceCreationCrossingClass), COUNT(chanceCreationShootingClass), COUNT(chanceCreationPositioningClass), COUNT(defencePressureClass), COUNT(defenceAggressionClass),COUNT( defenceTeamWidthClass), COUNT(defenceDefenderLineClass) from Team_Attributes GROUP BY team_api_id') :
     i = 1
     for attr in team_attributes[row[0]] :
         for key in attr :
             attr[key] /= row[i]
         i+=1
-print (team_attributes)
+
+team_normal_style_attr = {}
+for key in team_attributes :
+    i = 0
+    team_normal_style_attr[key] = []
+    for row in team_attributes[key] :
+        hightest = 0
+        team_normal_style_attr[key].append('')
+        for k in row :
+            if row[k] > hightest :
+                hightest = row[k]
+                team_normal_style_attr[key][i] = k
+        i += 1
+print (team_normal_style_attr)
