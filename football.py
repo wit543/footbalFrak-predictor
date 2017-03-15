@@ -31,12 +31,12 @@ match = pd.read_csv(f)
 match_result = []
 for i in range(0,len(match)):
     goal = match.ix[i]['home_team_goal'] - match.ix[i]['away_team_goal']
-    if(goal>0):
-        match_result.append("win")
-        match
-    elif (goal<0):
+
+    if (goal<0):
         match_result.append("lose")
     elif (goal==0):
+        match_result.append("win")
+    else:
         match_result.append("win")
 
 match['className'] = match_result
