@@ -2,6 +2,10 @@
 
 By Bayesian Network we predict football result from limit training data with some missing data and it correct 46.2 %
 
+## Full version of Doc
+
+https://goo.gl/8F1EuV
+
 ## Step of Learning
 
 1. Calculate Each Attribute Statistic of Each Team so we will know which team style they play frequently.
@@ -16,7 +20,7 @@ By Bayesian Network we predict football result from limit training data with som
 
 [Download](http://file.veerkesto.net/aic/soccer-train.sqlite)
 
-## Original Data are available in 
+## Original Data are available in
 
 [Kaggle](https://www.kaggle.com/hugomathien/soccer)
 

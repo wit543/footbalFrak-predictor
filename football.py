@@ -57,15 +57,15 @@ array = []
 
 
 numitems = len(match)
-percenttrain = 0.9
+percenttrain = 1
 numtrain = int(numitems*percenttrain)
 numtest = numitems - numtrain
 dataTrain = match[0:numtrain]
 dataTest = match[numtrain:numitems]
 print ('Training set', numtrain, 'items')
-print ('Test set', numtest, 'items')            
-            
-            
+print ('Test set', numtest, 'items')
+
+
 # Predict position from one or more of minutes, shots, passes, tackles, saves.
 # Try different features. What's the highest accuracy you can get?
 features = ['match_api_id','home_team_api_id','away_team_api_id']
@@ -81,7 +81,6 @@ numtest = len(dataTest)
 correct = 0
 for i in range(0,numtest):
 #    print 'Predicted:', predictions[i], ' Actual:', playersTest.ix[numtrain+i]['position']
-    if predictions[i] == dataTest.ix[numtrain+i]['className']: 
+    if predictions[i] == dataTest.ix[numtrain+i]['className']:
         correct +=1
 print ('Percent correct:', float(correct)/float(numtest))
-
